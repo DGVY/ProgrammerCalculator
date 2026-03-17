@@ -24,8 +24,12 @@ jobs:
           pip install flet
 
       - name: Build Windows executable
+        env:
+          PYTHONIOENCODING: utf-8
         run: |
-          flet build windows --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
+          $OutputEncoding = [System.Text.Encoding]::UTF8
+          [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+          flet build windows --module-name src.main --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
@@ -51,7 +55,7 @@ jobs:
 
       - name: Build Linux executable
         run: |
-          flet build linux --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
+          flet build linux --module-name src.main --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
@@ -77,7 +81,7 @@ jobs:
 
       - name: Build Android APK
         run: |
-          flet build apk --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
+          flet build apk --module-name src.main --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
@@ -103,7 +107,7 @@ jobs:
 
       - name: Build Web app
         run: |
-          flet build web --project calculator --product "ProgrammerCalculator" --yes
+          flet build web --module-name src.main --project calculator --product "ProgrammerCalculator" --yes
 
       - name: Upload Web artifact
         uses: actions/upload-artifact@v4
