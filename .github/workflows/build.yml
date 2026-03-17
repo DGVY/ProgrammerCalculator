@@ -90,7 +90,7 @@ jobs:
 
       - name: Build Android APK
         run: |
-          flet build apk --org com.programmercalc --project calculator --product "ProgrammerCalculator" --yes
+          flet build apk --org com.programmercalc --project calculator --product "ProgrammerCalculator" --android-skip-build-dependency-validation --yes
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
