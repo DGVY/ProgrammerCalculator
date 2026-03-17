@@ -55,7 +55,7 @@ project = "calculator"
 [tool.flet.android]
 split_per_abi = true
 target_sdk_version = 33
-min_sdk_version = 21
+min_sdk_version = 23
 
 [tool.flet.ios]
 
